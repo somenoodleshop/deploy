@@ -15,7 +15,7 @@ jobs:
           repository: somenoodleshop/hydra
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: build frontend assets with npm
-        run: npm install && npm run build
+        run: npm ci && npm run build
       - name: log into Docker registry
         uses: docker/login-action@v2
         with:
