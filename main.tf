@@ -17,13 +17,8 @@ variable "private_key" { type = string }
 variable "public_key" { type = string }
 variable "domain_name" { type = string }
 
-variable "domain" {
-  type = object({
-    default = string
-    secondary = string
-    api = string
-  })
-  default = {
+locals {
+  domain = {
     default = var.domain_name
     secondary = "www.${var.domain_name}"
     api = "api.${var.domain_name}"
