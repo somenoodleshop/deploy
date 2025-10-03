@@ -33,7 +33,6 @@ data "digitalocean_ssh_key" "terraform" { name = var.digitalocean_ssh_key_name }
 resource "digitalocean_droplet" "web" {
   image = "debian-13-x64"
   name = "web"
-  private_networking = true
   region = "nyc3"
   size = "s-1vcpu-1gb"
   ssh_keys = [data.digitalocean_ssh_key.terraform.id]
