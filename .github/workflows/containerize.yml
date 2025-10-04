@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  containerize-app:
+  containerize-hydra:
     permissions:
       packages: write
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
           repository: somenoodleshop/hydra
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: build frontend assets with npm
-        run: npm ci && npm run build
+        run: npm install && npm run build
       - name: log into Docker registry
         uses: docker/login-action@v2
         with:
@@ -23,6 +23,29 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name:
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
+
+  containerize-prometheus:
+    permissions:
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: somenoodleshop/prometheus
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: log into Docker registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: build prometheus container
         uses: docker/build-push-action@v5
         with:
           context: .
