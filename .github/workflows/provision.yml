@@ -1,0 +1,14 @@
+name: provision
+
+on:
+  workflow_dispatch:
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: somenoodleshop/deploy
+          token: ${{ secrets.GITHUB_TOKEN }}
