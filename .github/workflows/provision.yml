@@ -12,3 +12,7 @@ jobs:
         with:
           repository: somenoodleshop/deploy
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
