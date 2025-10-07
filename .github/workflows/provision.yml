@@ -22,3 +22,5 @@ jobs:
         run: terraform init
         env:
           TF_IN_AUTOMATION: true
+      - name: terraform validate
+        run: terraform validate
