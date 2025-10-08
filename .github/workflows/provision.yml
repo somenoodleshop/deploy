@@ -24,3 +24,6 @@ jobs:
           TF_IN_AUTOMATION: true
       - name: terraform validate
         run: terraform validate
+      - name: terraform plan
+        id: plan
+        run: terraform plan -out=tfplan
