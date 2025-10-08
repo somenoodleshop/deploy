@@ -22,7 +22,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name:
+      - name: push hydra to GitHub registry
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -45,7 +45,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: build prometheus container
+      - name: build prometheus container & push to GitHub registry
         uses: docker/build-push-action@v5
         with:
           context: .
