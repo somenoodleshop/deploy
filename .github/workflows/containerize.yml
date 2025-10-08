@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.organization }}/hydra:latest
+          tags: ghcr.io/${{ github.repository_owner }}/hydra:latest
 
   containerize-prometheus:
     permissions:
@@ -50,4 +50,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.organization }}/prometheus:latest
+          tags: ghcr.io/${{ github.repository_owner }}/prometheus:latest
