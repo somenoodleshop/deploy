@@ -22,7 +22,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: push hydra to GitHub registry
+      - name: build hydra container & push to GitHub registry
         uses: docker/build-push-action@v5
         with:
           context: .
