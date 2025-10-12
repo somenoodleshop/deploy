@@ -38,3 +38,17 @@ jobs:
         with:
           name: terraform-plan
           path: tfplan
+
+  terraform-apply:
+    needs: terraform-plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: somenoodleshop/deploy
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
