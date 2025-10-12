@@ -52,3 +52,8 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.13.3
+      - name: download terraform plan
+        uses: actions/download-artifact@v4
+        with:
+          name: terraform-plan
+          path: tfplan
