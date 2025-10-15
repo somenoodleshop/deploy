@@ -20,11 +20,16 @@ jobs:
         run: terraform init
         env:
           TF_IN_AUTOMATION: true
+      - name: debug environment variables
+        run: |
+          echo "Checking if secrets are set..."
+          if [ -z "$TF_VAR_digitalocean_ssh_key_name" ]; then
+            echo "ERROR: TF_VAR_digitalocean_ssh_key_name is NOT set"
+          else
+            echo "TF_VAR_digitalocean_ssh_key_name = $TF_VAR_digitalocean_ssh_key_name"
+          fi
+        env:
           TF_VAR_digitalocean_ssh_key_name: ${{ secrets.DIGITALOCEAN_SSH_KEY_NAME }}
-          TF_VAR_digitalocean_token: ${{ secrets.DIGITALOCEAN_TOKEN }}
-          TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
-          TF_VAR_public_key: ${{ secrets.PUBLIC_KEY }}
-          TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
       - name: terraform plan
         run: terraform plan
         env:
