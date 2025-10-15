@@ -6,6 +6,7 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    environment: deploy
     steps:
       - name: checkout code
         uses: actions/checkout@v4
