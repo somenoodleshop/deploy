@@ -16,6 +16,10 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.13.3
+      - name: terraform init
+        run: terraform init
+        env:
+          TF_IN_AUTOMATION: true
       - name: terraform plan
         run: terraform plan
         env:
