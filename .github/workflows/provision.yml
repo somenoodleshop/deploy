@@ -17,7 +17,7 @@ jobs:
         with:
           terraform_version: 1.13.3
       - name: terraform apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve
         env:
           TF_VAR_digitalocean_token: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_digitalocean_ssh_key_name: ${{ secrets.DIGITALOCEAN_SSH_KEY_NAME }}
