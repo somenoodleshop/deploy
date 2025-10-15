@@ -40,7 +40,7 @@ resource "digitalocean_droplet" "web" {
     host = self.ipv4_address
     user = "root"
     type = "ssh"
-    private_key = file(var.private_key)
+    private_key = try(file(var.private_key), var.private_key)
     timeout = "2m"
   }
   provisioner "remote-exec" {
