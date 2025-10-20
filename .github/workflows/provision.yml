@@ -21,6 +21,8 @@ jobs:
         run: terraform init
         env:
           TF_IN_AUTOMATION: true
+          AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SPACES_SECRET_KEY }}
       - name: terraform plan
         run: terraform plan
         env:
