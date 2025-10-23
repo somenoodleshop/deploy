@@ -19,7 +19,7 @@ jobs:
           terraform_version: 1.13.3
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: terraform init
-        run: terraform init
+        run: terraform init -backend-config="bucket=${{ secrets.BUCKET_NAME}}"
         env:
           TF_IN_AUTOMATION: true
           AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY }}
