@@ -57,8 +57,8 @@ resource "digitalocean_droplet" "web" {
     inline = [
       "sudo apt-get update",
       "sudo apt-get install -y python3 docker.io docker-compose",
-      "mkdir app"
-      "docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}"
+      "mkdir app",
+      "docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}",
       "docker run -p 80:80 nginxdemos/hello"
     ]
   }
