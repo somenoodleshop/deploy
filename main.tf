@@ -13,7 +13,7 @@ terraform {
     bucket = ""
     key = "terraform.tfstate"
     region = "us-east-1"
-    endpoint = "https://nyc3.digitaloceanspaces.com"
+    endpoints = ["https://nyc3.digitaloceanspaces.com"]
     encrypt = true
     skip_credentials_validation = true
     skip_metadata_api_check = true
