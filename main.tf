@@ -26,6 +26,8 @@ variable "digitalocean_token" { type = string }
 variable "private_key" { type = string }
 variable "public_key" { type = string }
 variable "domain_name" { type = string }
+variable "github_actor" { type = string }
+variable "github_token" { type = string }
 
 locals {
   domain = {
@@ -58,7 +60,7 @@ resource "digitalocean_droplet" "web" {
       "sudo apt-get update",
       "sudo apt-get install -y python3 docker.io docker-compose",
       "mkdir app",
-      "docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}",
+      "docker login ghcr.io -u ${var.github_actor} -p ${var.github_token}",
       "docker run -p 80:80 nginxdemos/hello"
     ]
   }
