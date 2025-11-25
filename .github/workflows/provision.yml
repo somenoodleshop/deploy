@@ -38,3 +38,5 @@ jobs:
           TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
           TF_VAR_public_key: ${{ secrets.PUBLIC_KEY }}
           TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
+          TF_VAR_github_actor: ${{ github.actor }}
+          TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
