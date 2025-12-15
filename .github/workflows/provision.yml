@@ -21,10 +21,12 @@ jobs:
         run: terraform init
         env:
           TF_IN_AUTOMATION: true
-          ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          ACCESS_KEY_SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          TF_VAR_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          TF_VAR_ACCESS_KEY_SECRET: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+          TF_VAR_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          TF_VAR_ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
           TF_VAR_digitalocean_ssh_key_name: ${{ secrets.DIGITALOCEAN_SSH_KEY_NAME }}
           TF_VAR_digitalocean_token: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
