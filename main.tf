@@ -10,7 +10,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "somenoodleshop-terraform"
+    bucket = ""
     key = "terraform.tfstate"
     region = "us-east-1"
     endpoints = { s3 = "https://nyc3.digitaloceanspaces.com" }
