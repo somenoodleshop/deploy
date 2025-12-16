@@ -23,3 +23,15 @@ jobs:
           TF_IN_AUTOMATION: true
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
+      - name: terraform destroy
+        run: terraform destroy -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
+          TF_VAR_digitalocean_ssh_key_name: ${{ secrets.DIGITALOCEAN_SSH_KEY_NAME }}
+          TF_VAR_digitalocean_token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
+          TF_VAR_public_key: ${{ secrets.PUBLIC_KEY }}
+          TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
+          TF_VAR_github_actor: ${{ github.actor }}
+          TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
