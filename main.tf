@@ -53,6 +53,14 @@ resource "digitalocean_droplet" "web" {
     private_key = try(file(var.private_key), var.private_key)
     timeout = "2m"
   }
+
+  provisioner "file" {
+    content = templatefile("${path.module}/config/traefik.yml", {
+      domain_name = var.domain_name
+    })
+    destination = "/tmp/traefik.yml"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
