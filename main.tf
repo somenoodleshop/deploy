@@ -85,6 +85,14 @@ resource "digitalocean_domain" "api" {
   ip_address = digitalocean_droplet.web.ipv4_address
 }
 
+resource "digitalocean_record" "root" {
+  domain = digitalocean_domain.default.id
+  type = "A"
+  name = "@"
+  value = digitalocean_droplet.web.ipv4_address
+  ttl = 3600
+}
+
 output "droplet_ip_address" {
   value= digitalocean_droplet.web.ipv4_address
 }
