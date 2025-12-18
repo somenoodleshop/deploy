@@ -27,6 +27,14 @@ variable "digitalocean_token" { type = string }
 variable "private_key" { type = string }
 variable "domain_name" { type = string }
 
+variable "domain" {
+  type = object({
+    default = string
+    secondary = string
+    api = string
+  })
+}
+
 locals {
   domain = {
     default = var.domain_name
