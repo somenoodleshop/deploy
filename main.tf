@@ -70,3 +70,18 @@ resource "digitalocean_droplet" "web" {
     ]
   }
 }
+
+resource "digitalocean_domain" "default" {
+  name = var.domain.default
+  ip_address = digitalocean_droplet.web.ipv4_address
+}
+
+resource "digitalocean_domain" "secondary" {
+  name = var.domain.secondary
+  ip_address = digitalocean_droplet.web.ipv4_address
+}
+
+resource "digitalocean_domain" "api" {
+  name = var.domain.api
+  ip_address = digitalocean_droplet.web.ipv4_address
+}
