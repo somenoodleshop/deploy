@@ -25,14 +25,7 @@ terraform {
 variable "digitalocean_ssh_key_name" { type = string }
 variable "digitalocean_token" { type = string }
 variable "private_key" { type = string }
-
-variable "domain" {
-  type = object({
-    default = string
-    secondary = string
-    api = string
-  })
-}
+variable "domain_name" { type = string }
 
 locals {
   domain = {
