@@ -65,8 +65,8 @@ resource "digitalocean_droplet" "web" {
     inline = [
       "sudo apt-get update",
       "sudo apt-get install -y python3 docker.io docker-compose",
-      "mkdir app",
-      "docker run -d -p 80:80 nginxdemos/hello"
+      "mkdir -p /app/traefik/letsencrypt",
+      "mv /tmp/traefik.yml /app/traefik/traefik.yml"
     ]
   }
 }
