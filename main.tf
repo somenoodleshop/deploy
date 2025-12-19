@@ -46,13 +46,6 @@ resource "digitalocean_droplet" "web" {
   region = "nyc3"
   size = "s-1vcpu-1gb"
   ssh_keys = [data.digitalocean_ssh_key.terraform.id]
-  connection {
-    host = self.ipv4_address
-    user = "root"
-    type = "ssh"
-    private_key = try(file(var.private_key), var.private_key)
-    timeout = "2m"
-  }
 }
 
 resource "digitalocean_domain" "default" {
