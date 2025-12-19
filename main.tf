@@ -55,7 +55,7 @@ resource "digitalocean_droplet" "web" {
   }
 
   provisioner "file" {
-    content = templatefile("${path.module}/config/traefik.yml", {
+    content = templatefile("${path.module}/config/traefik.yml.tpl", {
       domain_name = var.domain_name
     })
     destination = "/tmp/traefik.yml"
