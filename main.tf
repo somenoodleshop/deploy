@@ -40,6 +40,19 @@ provider "docker" { host = "unix:///var/run/docker.sock" }
 
 data "digitalocean_ssh_key" "terraform" { name = var.digitalocean_ssh_key_name }
 
+data "cloudinit_config" "config" {
+  gzip = false
+  base64_encode = false
+  part {
+    content_type = "text/cloud-config"
+    content = yamlencode({
+      package_update = true
+      package_upgrade = true
+      packages = ["docker.io", "docker-compose"]
+    })
+  }
+}
+
 resource "digitalocean_droplet" "web" {
   image = "debian-13-x64"
   name = "web"
