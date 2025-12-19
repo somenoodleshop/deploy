@@ -16,7 +16,7 @@ entryPoints:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: admin@${vars.domain_name}
+      email: admin@${domain_name}
       storage: /letsencrypt/acme.json
       httpChallenge:
         entryPoint: web
