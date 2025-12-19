@@ -53,15 +53,6 @@ resource "digitalocean_droplet" "web" {
     private_key = try(file(var.private_key), var.private_key)
     timeout = "2m"
   }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update",
-      "sudo apt-get install -y python3 docker.io docker-compose",
-      "mkdir -p /app/traefik/letsencrypt",
-      "mv /tmp/traefik.yml /app/traefik/traefik.yml"
-    ]
-  }
 }
 
 resource "digitalocean_domain" "default" {
