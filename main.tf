@@ -48,7 +48,7 @@ data "cloudinit_config" "config" {
     content = yamlencode({
       package_update = true
       package_upgrade = true
-      packages = ["docker.io", "docker-compose"]
+      packages = ["ansible", "docker.io", "docker-compose", "python3-pip"]
     })
   }
 }
