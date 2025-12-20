@@ -33,6 +33,9 @@ locals {
     secondary = "www.${var.domain_name}"
     api = "api.${var.domain_name}"
   }
+  traefik_config = templatefile("${path.module}/config/traefik.yml", {
+    domain_name = var.domain_name
+  })
 }
 
 provider "digitalocean" { token = var.digitalocean_token }
