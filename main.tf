@@ -52,6 +52,13 @@ data "cloudinit_config" "config" {
       package_update = true
       package_upgrade = true
       packages = ["ansible", "docker.io", "docker-compose", "python3-pip"]
+      write_files = [
+        {
+          path = "/app/traefik/traefik.yml"
+          permissions = "0644"
+          content = local.traefik_config
+        }
+      ]
     })
   }
 }
