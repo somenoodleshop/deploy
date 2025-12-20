@@ -59,6 +59,7 @@ resource "digitalocean_droplet" "web" {
   region = "nyc3"
   size = "s-1vcpu-1gb"
   ssh_keys = [data.digitalocean_ssh_key.terraform.id]
+  user_data = data.cloudinit_config.config.rendered
 }
 
 resource "digitalocean_domain" "default" {
