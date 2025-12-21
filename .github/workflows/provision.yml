@@ -43,3 +43,5 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ansible
+      - name: run ansible playbook
+        run: ansible-playbook -i "${{ steps.droplet_ip.outputs.ip }}," playbook/main.yml --user root --private-key ${{ secrets.PRIVATE_KEY }}
