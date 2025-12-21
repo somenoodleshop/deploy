@@ -18,3 +18,19 @@
         ipam_config:
           - subnet: 172.20.0.0/16
             gateway: 172.20.0.1
+
+    - name: run traefik container
+      docker_container:
+        name: traefik
+        image: traefik:v3.6.5
+        state: started
+        restart_policy: unless-stopped
+        networks:
+          - name: intranet
+        ports:
+          - '80:80'
+          - '443:443'
+        volumes:
+          - '/var/run/docker.sock:/var/run/docker.sock:ro'
+          - '/app/traefik/traefik.yml:/traefik.yml:ro'
+          - '/app/traefik/letsencrypt:/letsencrypt'
