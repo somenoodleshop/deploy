@@ -24,6 +24,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
       - name: terraform apply
+        id: terraform
         run: terraform apply -auto-approve
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
@@ -35,3 +36,6 @@ jobs:
           TF_VAR_domain_name: ${{ secrets.DOMAIN_NAME }}
           TF_VAR_github_actor: ${{ github.actor }}
           TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: get droplet IP
+        id: droplet_ip
+        run: echo "ip=$(terraform output -raw droplet_ip_address)" >> $GITHUB_OUTPUT
