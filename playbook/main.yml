@@ -1,7 +1,6 @@
 ---
 - name: Setup Docker containers and network
-  hosts: localhost
-  connection: local
+  hosts: all
   become: yes
   
   tasks:
