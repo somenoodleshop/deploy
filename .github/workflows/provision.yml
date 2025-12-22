@@ -28,6 +28,7 @@ jobs:
         run: |
           terraform apply -auto-approve
           echo "IP: $(terraform output -raw droplet_ip_address)"
+          echo "ip=$(terraform output -raw droplet_ip_address)" >> $GITHUB_OUTPUT
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
