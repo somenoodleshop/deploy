@@ -25,7 +25,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
       - name: terraform apply
         id: terraform
-        run: terraform apply -auto-approve
+        run: |
+          terraform apply -auto-approve
+          echo "IP: $(terraform output -raw droplet_ip_address)"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_KEY_SECRET }}
