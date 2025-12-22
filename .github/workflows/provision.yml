@@ -38,7 +38,9 @@ jobs:
           TF_VAR_github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: get droplet IP
         id: droplet_ip
-        run: echo "ip=$(terraform output -raw droplet_ip_address)" >> $GITHUB_OUTPUT
+        run: |
+          echo "IP: $(terraform output -raw droplet_ip_address)"
+          echo "ip=$(terraform output -raw droplet_ip_address)" >> $GITHUB_OUTPUT
       - name: install ansible
         run: |
           sudo apt-get update
