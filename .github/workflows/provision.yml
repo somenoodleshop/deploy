@@ -48,6 +48,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          echo "${{ steps.droplet_ip.outputs.ip }}"
           ssh-keyscan -H ${{ steps.droplet_ip.outputs.ip }} >> ~/.ssh/known_hosts
       - name: run ansible playbook
         run: ansible-playbook -i "${{ steps.droplet_ip.outputs.ip }}," playbook/main.yml --user root --private-key ${{ secrets.PRIVATE_KEY }}
