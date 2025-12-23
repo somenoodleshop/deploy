@@ -40,7 +40,6 @@ jobs:
       - name: get droplet IP
         id: droplet_ip
         run: |
-          echo "IP: $(terraform output -raw droplet_ip_address)"
           echo "ip=$(terraform output -raw droplet_ip_address)" >> $GITHUB_OUTPUT
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
