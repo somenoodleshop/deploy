@@ -56,4 +56,4 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ steps.droplet_ip.outputs.ip }} >> ~/.ssh/known_hosts
       - name: run ansible playbook
-        run: ansible-playbook -i "${{ steps.droplet_ip.outputs.ip }}," playbook/main.yml --user root --private-key ${{ secrets.PRIVATE_KEY }}
+        run: ansible-playbook -i "${{ steps.droplet_ip.outputs.ip }}," playbook/main.yml --user root --private-key ~/.ssh/id_rsa
