@@ -18,6 +18,12 @@
           - subnet: 172.20.0.0/16
             gateway: 172.20.0.1
 
+    - name: create traefik config directory
+      file:
+        path: /app/traefik
+        state: directory
+        mode: '0755'
+
     - name: run traefik container
       docker_container:
         name: traefik
