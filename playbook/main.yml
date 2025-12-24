@@ -51,3 +51,4 @@
           - '/var/run/docker.sock:/var/run/docker.sock:ro'
           - '/app/traefik/traefik.yml:/traefik.yml:ro'
           - '/app/traefik/letsencrypt:/letsencrypt'
+          - '/app/traefik/letsencrypt/acme.json:/letsencrypt/acme.json:ro'
