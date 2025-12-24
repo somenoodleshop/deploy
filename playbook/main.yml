@@ -52,3 +52,14 @@
           - '/app/traefik/traefik.yml:/traefik.yml:ro'
           - '/app/traefik/letsencrypt:/letsencrypt'
           - '/app/traefik/letsencrypt/acme.json:/letsencrypt/acme.json:ro'
+
+    - name: run nginx hello world container
+      docker_container:
+        name: nginx
+        image: nginxdemos/hello
+        state: started
+        restart_policy: unless-stopped
+        networks:
+          - name: intranet
+        ports:
+          - '80:80'
