@@ -30,6 +30,12 @@
         state: directory
         mode: '0755'
 
+    - name: create acme.json file with proper permissions
+      file:
+        path: /app/traefik/letsencrypt/acme.json
+        state: touch
+        mode: '0600'
+
     - name: run traefik container
       docker_container:
         name: traefik
