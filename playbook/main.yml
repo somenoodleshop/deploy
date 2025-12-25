@@ -51,6 +51,10 @@
           - '/var/run/docker.sock:/var/run/docker.sock:ro'
           - '/app/traefik:/traefik:ro'
           - '/app/letsencrypt:/letsencrypt:ro'
+        command:
+          - '--api.insecure=false'
+          - '--providers.docker=true'
+          - '--providers.docker.exposedbydefault=false'
 
     - name: run nginx hello world container
       docker_container:
