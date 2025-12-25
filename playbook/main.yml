@@ -49,8 +49,8 @@
           - '443:443'
         volumes:
           - '/var/run/docker.sock:/var/run/docker.sock:ro'
-          - '/app/traefik/traefik.yml:/traefik.yml:ro'
-          - '/app/traefik/letsencrypt:/letsencrypt'
+          - '/app/traefik:/traefik:ro'
+          - '/app/letsencrypt:/letsencrypt:ro'
 
     - name: run nginx hello world container
       docker_container:
