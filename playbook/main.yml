@@ -57,6 +57,7 @@
           - '--providers.docker.exposedbydefault=false'
           - '--entrypoints.web.address=:80'
           - '--entrypoints.websecure.address=:443'
+          - '--certificatesresolvers.terraform.acme.tlschallenge=true'
 
     - name: run nginx hello world container
       docker_container:
