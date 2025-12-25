@@ -55,6 +55,8 @@
           - '--api.insecure=false'
           - '--providers.docker=true'
           - '--providers.docker.exposedbydefault=false'
+          - '--entrypoints.web.address=:80'
+          - '--entrypoints.websecure.address=:443'
 
     - name: run nginx hello world container
       docker_container:
