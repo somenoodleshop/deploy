@@ -32,7 +32,7 @@
 
     - name: create acme.json file with proper permissions
       file:
-        path: /app/traefik/letsencrypt/acme.json
+        path: /app/letsencrypt/acme.json
         state: touch
         mode: '0600'
 
