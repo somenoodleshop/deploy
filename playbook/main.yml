@@ -3,6 +3,9 @@
   hosts: all
   become: yes
   
+  vars:
+    domain_name: "{{ domain_name }}"
+
   tasks:
     - name: ensure Docker service is started
       systemd:
@@ -58,7 +61,7 @@
           - '--entrypoints.web.address=:80'
           - '--entrypoints.websecure.address=:443'
           - '--certificatesresolvers.terraform.acme.tlschallenge=true'
-          - '--certificatesresolvers.terraform.acme.email=admin@${domain_name}'
+          - '--certificatesresolvers.terraform.acme.email=admin@{{ domain_name }}'
           - '--certificatesresolvers.terraform.acme.storage=/letsencrypt/acme.json'
 
     - name: run nginx hello world container
@@ -73,7 +76,7 @@
           - name: intranet
         labels:
           - 'traefik.enable=true'
-          - 'traefik.http.routers.nginx.rule=Host(`metis.sh`) || Host(`www.metis.sh`)'
+          - 'traefik.http.routers.nginx.rule=Host(`{{ domain_name }}`) || Host(`www.{{ domain_name }}`)'
           - 'traefik.http.routers.nginx.entrypoints=websecure'
           - 'traefik.http.routers.nginx.tls.certresolver=terraform'
           - 'traefik.http.services.nginx.loadbalancer.server.port=80'
