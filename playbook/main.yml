@@ -75,8 +75,8 @@
         networks:
           - name: intranet
         labels:
-          - 'traefik.enable=true'
-          - 'traefik.http.routers.nginx.rule=Host(`{{ domain_name }}`) || Host(`www.{{ domain_name }}`)'
-          - 'traefik.http.routers.nginx.entrypoints=websecure'
-          - 'traefik.http.routers.nginx.tls.certresolver=terraform'
-          - 'traefik.http.services.nginx.loadbalancer.server.port=80'
+          traefik.enable: 'true'
+          traefik.http.routers.nginx.rule: 'Host(`{{ domain_name }}`) || Host(`www.{{ domain_name }}`)'
+          traefik.http.routers.nginx.entrypoints: 'websecure'
+          traefik.http.routers.nginx.tls.certresolver: 'terraform'
+          traefik.http.services.nginx.loadbalancer.server.port: '80'
