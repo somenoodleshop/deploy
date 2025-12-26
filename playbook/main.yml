@@ -60,6 +60,8 @@
           - '--providers.docker.exposedbydefault=false'
           - '--entrypoints.web.address=:80'
           - '--entrypoints.websecure.address=:443'
+          - '--entrypoints.web.http.redirections.entryPoint.scheme=https'
+          - '--entrypoints.web.http.redirections.entryPoint.to=websecure'
           - '--certificatesresolvers.terraform.acme.tlschallenge=true'
           - '--certificatesresolvers.terraform.acme.email=admin@{{ domain_name }}'
           - '--certificatesresolvers.terraform.acme.storage=/letsencrypt/acme.json'
