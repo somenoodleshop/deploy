@@ -75,5 +75,5 @@
           - 'traefik.enable=true'
           - 'traefik.http.routers.nginx.rule=Host(`metis.sh`) || Host(`www.metis.sh`)'
           - 'traefik.http.routers.nginx.entrypoints=websecure'
-          - 'traefik.http.routers.nginx.tls.certresolver=letsencrypt'
+          - 'traefik.http.routers.nginx.tls.certresolver=terraform'
           - 'traefik.http.services.nginx.loadbalancer.server.port=80'
