@@ -58,6 +58,7 @@
           - '--entrypoints.web.address=:80'
           - '--entrypoints.websecure.address=:443'
           - '--certificatesresolvers.terraform.acme.tlschallenge=true'
+          - '--certificatesresolvers.terraform.acme.email=admin@${domain_name}'
 
     - name: run nginx hello world container
       docker_container:
