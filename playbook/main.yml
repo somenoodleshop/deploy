@@ -70,8 +70,6 @@
         image: nginxdemos/hello
         state: started
         restart_policy: unless-stopped
-        depends_on:
-          - traefik
         networks:
           - name: intranet
         labels:
