@@ -56,3 +56,9 @@ jobs:
     permissions:
       packages: write
     runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: somenoodleshop/randomwebsite
+          token: ${{ secrets.GITHUB_TOKEN }}
