@@ -80,3 +80,12 @@
           traefik.http.routers.nginx.entrypoints: 'websecure'
           traefik.http.routers.nginx.tls.certresolver: 'terraform'
           traefik.http.services.nginx.loadbalancer.server.port: '80'
+
+    - name: run randomwebsite container
+      docker_container:
+        name: randomwebsite
+        image: ghcr.io/somenoodleshop/randomwebsite:latest
+        state: started
+        restart_policy: unless-stopped
+        networks:
+          - name: intranet
