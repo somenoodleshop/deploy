@@ -84,7 +84,7 @@
     - name: run randomwebsite container
       docker_container:
         name: randomwebsite
-        image: ghcr.io/somenoodleshop/randomwebsite:latest
+        image: ghcr.io/arandombit/randomwebsite:latest
         state: started
         restart_policy: unless-stopped
         networks:
