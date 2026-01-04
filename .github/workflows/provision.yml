@@ -7,6 +7,9 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
     environment: deploy
+    permissions:
+      contents: read
+      packages: read
     steps:
       - name: checkout code
         uses: actions/checkout@v4
