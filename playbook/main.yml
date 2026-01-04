@@ -5,6 +5,8 @@
   
   vars:
     domain_name: "{{ domain_name }}"
+    github_actor: "{{ github_actor }}"
+    github_token: "{{ github_token }}"
 
   tasks:
     - name: ensure Docker service is started
