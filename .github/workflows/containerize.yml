@@ -2,6 +2,12 @@ name: containerize
 
 on:
   workflow_dispatch:
+    inputs:
+      containerize_website:
+        description: 'Containerize Website'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   containerize-hydra:
@@ -53,6 +59,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/prometheus:latest
 
   containerize-website:
+    if: ${{ inputs.containerize_website }}
     permissions:
       packages: write
     runs-on: ubuntu-latest
