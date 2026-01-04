@@ -8,6 +8,11 @@ on:
         required: false
         type: boolean
         default: false
+      containerize_prometheus:
+        description: 'Containerize Prometheus'
+        required: false
+        type: boolean
+        default: false
       containerize_website:
         description: 'Containerize Website'
         required: false
@@ -42,6 +47,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/hydra:latest
 
   containerize-prometheus:
+    if: ${{ inputs.containerize_prometheus }}
     permissions:
       packages: write
     runs-on: ubuntu-latest
