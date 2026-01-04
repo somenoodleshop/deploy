@@ -3,6 +3,11 @@ name: containerize
 on:
   workflow_dispatch:
     inputs:
+      containerize_hydra:
+        description: 'Containerize Hydra'
+        required: false
+        type: boolean
+        default: false
       containerize_website:
         description: 'Containerize Website'
         required: false
@@ -11,6 +16,7 @@ on:
 
 jobs:
   containerize-hydra:
+    if: ${{ inputs.containerize_hydra }}
     permissions:
       packages: write
     runs-on: ubuntu-latest
