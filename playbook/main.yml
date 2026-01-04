@@ -83,6 +83,13 @@
           traefik.http.routers.nginx.tls.certresolver: 'terraform'
           traefik.http.services.nginx.loadbalancer.server.port: '80'
 
+    - name: login to GitHub container registry
+      community.docker.docker_login:
+        registry_url: ghcr.io
+        username: "{{ github_actor }}"
+        password: "{{ github_token }}"
+      when: github_token is defined
+
     - name: run randomwebsite container
       docker_container:
         name: randomwebsite
