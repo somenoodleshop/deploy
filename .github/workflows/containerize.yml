@@ -55,7 +55,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
         with:
-          repository: somenoodleshop/prometheus
+          repository: ${{ github.repository_owner }}/prometheus
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: log into Docker registry
         uses: docker/login-action@v2
