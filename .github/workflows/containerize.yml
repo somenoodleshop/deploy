@@ -92,4 +92,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/arandombit/randomwebsite:latest
+          tags: ghcr.io/${{ github.actor }}/randomwebsite:latest
