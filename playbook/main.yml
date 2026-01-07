@@ -86,7 +86,7 @@
     - name: login to GitHub container registry
       community.docker.docker_login:
         registry_url: ghcr.io
-        username: "{{ github_actor }}"
+        username: "{{ github_repository_owner }}"
         password: "{{ github_token }}"
       when: github_token is defined
 
