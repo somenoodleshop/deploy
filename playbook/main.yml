@@ -5,6 +5,7 @@
   
   vars:
     domain_name: "{{ domain_name }}"
+    github_actor: "{{ github_actor }}"
     github_repository_owner: "{{ github_repository_owner }}"
     github_token: "{{ github_token }}"
 
@@ -86,7 +87,7 @@
     - name: login to GitHub container registry
       community.docker.docker_login:
         registry_url: ghcr.io
-        username: "{{ github_repository_owner }}"
+        username: "{{ github_actor }}"
         password: "{{ github_token }}"
       when: github_token is defined
 
