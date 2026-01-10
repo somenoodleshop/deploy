@@ -94,8 +94,7 @@
     - name: run randomwebsite container
       docker_container:
         name: randomwebsite
-        # image: ghcr.io/{{ github_repository_owner }}/randomwebsite:latest
-        image: ghcr.io/somenoodleshop/randomwebsite:latest
+        image: ghcr.io/{{ github_repository_owner }}/randomwebsite:latest
         state: started
         restart_policy: unless-stopped
         pull: always
