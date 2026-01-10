@@ -99,6 +99,7 @@
         state: started
         restart_policy: unless-stopped
         pull: always
+        recreate: always
         networks:
           - name: intranet
         labels:
