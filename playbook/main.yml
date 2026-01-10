@@ -98,6 +98,7 @@
         image: ghcr.io/somenoodleshop/randomwebsite:latest
         state: started
         restart_policy: unless-stopped
+        pull: always
         networks:
           - name: intranet
         labels:
