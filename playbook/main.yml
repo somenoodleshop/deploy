@@ -98,7 +98,6 @@
         state: started
         restart_policy: unless-stopped
         pull: always
-        recreate: true
         networks:
           - name: intranet
         labels:
