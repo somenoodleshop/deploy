@@ -106,7 +106,4 @@
           traefik.http.routers.randomwebsite.entrypoints: 'websecure'
           traefik.http.routers.randomwebsite.tls.certresolver: 'terraform'
           traefik.http.middlewares.randomwebsite-stripprefix.stripprefix.prefixes: '/website'
-          traefik.http.middlewares.randomwebsite-headers.headers.customRequestHeaders.X-Forwarded-Prefix: '/website'
-          traefik.http.middlewares.randomwebsite-chain.chain.middlewares: 'randomwebsite-stripprefix,randomwebsite-headers'
-          traefik.http.routers.randomwebsite.middlewares: 'randomwebsite-chain'
           traefik.http.services.randomwebsite.loadbalancer.server.port: '80'
