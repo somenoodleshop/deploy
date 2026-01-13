@@ -155,3 +155,4 @@
           traefik.enable: 'true'
           traefik.http.routers.kratos.entrypoints: 'websecure'
           traefik.http.routers.kratos.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/auth`)'
+          traefik.http.middlewares.strip-auth-prefix.stripprefix.prefixes: '/auth'
