@@ -105,8 +105,8 @@
           - name: intranet
         labels:
           traefik.enable: 'true'
-          traefik.http.routers.randomwebsite.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/website`)'
           traefik.http.routers.randomwebsite.entrypoints: 'websecure'
+          traefik.http.routers.randomwebsite.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/website`)'
           traefik.http.routers.randomwebsite.tls.certresolver: 'terraform'
           traefik.http.middlewares.randomwebsite-stripprefix.stripprefix.prefixes: '/website'
           traefik.http.services.randomwebsite.loadbalancer.server.port: '80'
@@ -151,3 +151,7 @@
           - /app/config/kratos:/etc/config/kratos
         depends_on:
           - kratos-migrate
+        labels:
+          traefik.enable: 'true'
+          traefik.http.routers.kratos.entrypoints: 'websecure'
+          traefik.http.routers.kratos.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/auth`)'
