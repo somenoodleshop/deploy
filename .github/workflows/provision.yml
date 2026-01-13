@@ -58,4 +58,11 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ steps.droplet_ip.outputs.ip }} >> ~/.ssh/known_hosts
       - name: run ansible playbook
-        run: ansible-playbook -i "${{ steps.droplet_ip.outputs.ip }}," playbook/main.yml --user root --private-key ~/.ssh/id_rsa -e "domain_name=${{ secrets.DOMAIN_NAME }}" -e "github_actor=${{ github.actor }}" -e "github_repository_owner=${{ github.repository_owner }}" -e "github_token=${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          ansible-playbook -i "${{ steps.droplet_ip.outputs.ip }}," playbook/main.yml \
+            --user root \
+            --private-key ~/.ssh/id_rsa \
+            -e "domain_name=${{ secrets.DOMAIN_NAME }}" \
+            -e "github_actor=${{ github.actor }}" \
+            -e "github_repository_owner=${{ github.repository_owner }}" \
+            -e "github_token=${{ secrets.GITHUB_TOKEN }}"
