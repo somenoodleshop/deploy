@@ -115,6 +115,8 @@
       docker_container:
         name: kratos-db
         image: postgres:15
+        state: started
+        restart_policy: unless-stopped
         environment:
           POSTGRES_USER: "{{ postgres_user }}"
           POSTGRES_PASSWORD: "{{ postgres_password }}"
