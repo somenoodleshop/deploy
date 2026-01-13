@@ -134,5 +134,7 @@
           DSN: postgres://{{ postgres_user }}:{{ postgres_password }}@kratos-db:5432/{{ postgres_db }}?sslmode=disable&max_conns=20&max_idle_conns=4
         command:
           - -c /etc/config/kratos/kratos.yml migrate sql -e --yes
+        volumes:
+          - /app/config/kratos:/etc/config/kratos
         depends_on:
           - kratos-db
