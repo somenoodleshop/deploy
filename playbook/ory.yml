@@ -1,0 +1,48 @@
+---
+- name: run kratos db container
+  docker_container:
+    name: kratos-db
+    image: postgres:15
+    state: started
+    restart_policy: unless-stopped
+    environment:
+      POSTGRES_USER: "{{ postgres_user }}"
+      POSTGRES_PASSWORD: "{{ postgres_password }}"
+      POSTGRES_DB: "{{ postgres_db }}"
+    volumes:
+      - /app/kratos-db:/var/lib/postgresql/data
+
+- name: run kratos migrate
+  docker_container:
+    name: kratos-migrate
+    image: oryd/kratos:v1.3.1
+    state: started
+    restart_policy: unless-stopped
+    environment:
+      DSN: postgres://{{ postgres_user }}:{{ postgres_password }}@kratos-db:5432/{{ postgres_db }}?sslmode=disable&max_conns=20&max_idle_conns=4
+    command:
+      - -c /etc/config/kratos/kratos.yml migrate sql -e --yes
+    volumes:
+      - /app/config/kratos:/etc/config/kratos
+    depends_on:
+      - kratos-db
+
+- name: run kratos container
+  docker_container:
+    name: kratos
+    image: oryd/kratos:v1.3.1
+    state: started
+    restart_policy: unless-stopped
+    environment:
+      DSN: postgres://{{ postgres_user }}:{{ postgres_password }}@kratos-db:5432/{{ postgres_db }}?sslmode=disable&max_conns=20&max_idle_conns=4
+    volumes:
+      - /app/config/kratos:/etc/config/kratos
+    depends_on:
+      - kratos-migrate
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.kratos.entrypoints: 'websecure'
+      traefik.http.services.kratos.loadbalancer.server.port: '4433'
+      traefik.http.routers.kratos.tls.certresolver: 'terraform'
+      traefik.http.routers.kratos.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/auth`)'
+      traefik.http.middlewares.strip-auth-prefix.stripprefix.prefixes: '/auth'
