@@ -8,6 +8,9 @@
     github_actor: "{{ github_actor }}"
     github_repository_owner: "{{ github_repository_owner }}"
     github_token: "{{ github_token }}"
+    postgres_user: "{{ postgres_user }}"
+    postgres_password: "{{ postgres_password }}"
+    postgres_db: "{{ postgres_db }}"
 
   tasks:
     - name: ensure Docker service is started
