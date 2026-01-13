@@ -110,3 +110,14 @@
           traefik.http.routers.randomwebsite.tls.certresolver: 'terraform'
           traefik.http.middlewares.randomwebsite-stripprefix.stripprefix.prefixes: '/website'
           traefik.http.services.randomwebsite.loadbalancer.server.port: '80'
+
+    - name: run kratos db container
+      docker_container:
+        name: kratos-db
+        image: postgres:15
+        environment:
+          POSTGRES_USER: "{{ postgres_user }}"
+          POSTGRES_PASSWORD: "{{ postgres_password }}"
+          POSTGRES_DB: "{{ postgres_db }}"
+        volumes:
+          - /app/kratos-db:/var/lib/postgresql/data
