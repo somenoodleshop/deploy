@@ -9,6 +9,11 @@
       - /app/config/oathkeeper:/etc/config/oathkeeper
     depends_on:
       - traefik
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.oathkeeper.entrypoints: 'websecure'
+      traefik.http.routers.oathkeeper.tls.certresolver: 'terraform'
+      traefik.http.services.oathkeeper.loadbalancer.server.port: '4456'
 
 - name: run kratos db container
   docker_container:
