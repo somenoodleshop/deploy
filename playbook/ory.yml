@@ -7,6 +7,8 @@
     restart_policy: unless-stopped
     volumes:
       - /app/config/oathkeeper:/etc/config/oathkeeper
+    depends_on:
+      - traefik
 
 - name: run kratos db container
   docker_container:
