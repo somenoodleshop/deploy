@@ -2,7 +2,6 @@
 - name: Setup Docker containers and network
   hosts: all
   become: yes
-  
   vars:
     domain_name: "{{ domain_name }}"
     github_actor: "{{ github_actor }}"
@@ -27,50 +26,8 @@
           - subnet: 172.20.0.0/16
             gateway: 172.20.0.1
 
-    - name: create traefik config directory
-      file:
-        path: /app/traefik
-        state: directory
-        mode: '0755'
-
-    - name: create letsencrypt directory
-      file:
-        path: /app/letsencrypt
-        state: directory
-        mode: '0755'
-
-    - name: create acme.json file with proper permissions
-      file:
-        path: /app/letsencrypt/acme.json
-        state: touch
-        mode: '0600'
-
-    - name: run traefik container
-      docker_container:
-        name: traefik
-        image: traefik:v3.6.5
-        state: started
-        restart_policy: unless-stopped
-        networks:
-          - name: intranet
-        ports:
-          - '80:80'
-          - '443:443'
-        volumes:
-          - '/var/run/docker.sock:/var/run/docker.sock'
-          - '/app/traefik:/traefik'
-          - '/app/letsencrypt:/letsencrypt'
-        command:
-          - '--api.insecure=false'
-          - '--providers.docker=true'
-          - '--providers.docker.exposedbydefault=false'
-          - '--entrypoints.web.address=:80'
-          - '--entrypoints.websecure.address=:443'
-          - '--entrypoints.web.http.redirections.entryPoint.scheme=https'
-          - '--entrypoints.web.http.redirections.entryPoint.to=websecure'
-          - '--certificatesresolvers.terraform.acme.tlschallenge=true'
-          - '--certificatesresolvers.terraform.acme.email=admin@{{ domain_name }}'
-          - '--certificatesresolvers.terraform.acme.storage=/letsencrypt/acme.json'
+    - name: import traefik tasks
+      import_tasks: traefik.yml
 
     - name: run nginx hello world container
       docker_container:
