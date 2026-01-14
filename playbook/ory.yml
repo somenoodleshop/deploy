@@ -14,6 +14,8 @@
       traefik.http.routers.oathkeeper.entrypoints: 'websecure'
       traefik.http.routers.oathkeeper.tls.certresolver: 'terraform'
       traefik.http.services.oathkeeper.loadbalancer.server.port: '4456'
+      traefik.http.routers.oathkeeper.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/oathkeeper`)'
+      traefik.http.middlewares.strip-oathkeeper-prefix.stripprefix.prefixes: '/oathkeeper'
 
 - name: run kratos db container
   docker_container:
