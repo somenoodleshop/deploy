@@ -1,4 +1,9 @@
 ---
+- name: run oathkeeper container
+  docker_container:
+    name: oathkeeper
+    image: oryd/oathkeeper:v0.40.9
+
 - name: run kratos db container
   docker_container:
     name: kratos-db
