@@ -5,6 +5,8 @@
     image: oryd/oathkeeper:v0.40.9
     state: started
     restart_policy: unless-stopped
+    volumes:
+      - /app/config/oathkeeper:/etc/config/oathkeeper
 
 - name: run kratos db container
   docker_container:
