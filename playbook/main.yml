@@ -70,3 +70,6 @@
 
     - name: import ory tasks
       import_tasks: ory.yml
+
+    - name: import whoami tasks
+      import_tasks: whoami.yml
