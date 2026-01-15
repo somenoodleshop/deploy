@@ -3,3 +3,5 @@
   docker_container:
     name: whoami/public
     image: traefik/whoami
+    state: started
+    restart_policy: unless-stopped
