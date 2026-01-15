@@ -13,3 +13,10 @@
       traefik.http.services.whoami.loadbalancer.server.port: '443'
       traefik.http.routers.whoami.middlewares: strip-public-prefix
       traefik.http.middlewares.strip-public-prefix.stripprefix.prefixes: '/public'
+
+- name: run private whoami container
+  docker_container:
+    name: whoami/private
+    image: traefik/whoami
+    state: started
+    restart_policy: unless-stopped
