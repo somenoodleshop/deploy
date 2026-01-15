@@ -26,3 +26,5 @@
       traefik.http.routers.whoami.entrypoints: 'websecure'
       traefik.http.routers.whoami.tls.certresolver: 'terraform'
       traefik.http.services.whoami.loadbalancer.server.port: '443'
+      traefik.http.routers.whoami.middlewares: strip-private-prefix
+      traefik.http.middlewares.strip-private-prefix.stripprefix.prefixes: '/private'
