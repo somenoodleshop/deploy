@@ -20,3 +20,9 @@
     image: traefik/whoami
     state: started
     restart_policy: unless-stopped
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.whoami.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/private`)'
+      traefik.http.routers.whoami.entrypoints: 'websecure'
+      traefik.http.routers.whoami.tls.certresolver: 'terraform'
+      traefik.http.services.whoami.loadbalancer.server.port: '443'
