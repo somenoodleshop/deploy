@@ -1,0 +1,5 @@
+---
+- name: run public whoami container
+  docker_container:
+    name: whoami/public
+    image: traefik/whoami
