@@ -24,3 +24,22 @@ access_rules:
   matching_strategy: glob
   repositories:
     - file:///etc/config/oathkeeper/access-rules.yml
+
+authenticators:
+  anonymous:
+    enabled: true
+    config:
+      subject: guest
+  cookie_session:
+    enabled: true
+    config:
+      check_session_url: http://kratos:4433/sessions/whoami
+      preserve_path: true
+      extra_from: "@this"
+      subject_from: "identity.id"
+      forward_http_headers:
+        - Cookie
+      only:
+        - ory_kratos_session
+  noop:
+    enabled: true
