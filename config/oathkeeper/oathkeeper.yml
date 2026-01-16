@@ -53,3 +53,24 @@ authorizers:
 mutators:
   noop:
     enabled: true
+
+errors:
+  fallback:
+    - redirect
+  handlers:
+    redirect:
+      enabled: true
+      config:
+        to: http://localhost:8000/selfservice/login
+        when:
+          - error:
+            - unauthorized
+            - forbidden
+            request:
+              header:
+                accept:
+                  - text/html
+    json:
+      enabled: true
+      config:
+        verbose: true
