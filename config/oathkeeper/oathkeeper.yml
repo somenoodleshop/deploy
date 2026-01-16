@@ -43,3 +43,13 @@ authenticators:
         - ory_kratos_session
   noop:
     enabled: true
+
+authorizers:
+  allow:
+    enabled: true
+  deny:
+    enabled: true
+
+mutators:
+  noop:
+    enabled: true
