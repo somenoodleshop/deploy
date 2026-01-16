@@ -19,3 +19,8 @@ serve:
         - Set-Cookie
       allow_credentials: true
       debug: true
+
+access_rules:
+  matching_strategy: glob
+  repositories:
+    - file:///etc/config/oathkeeper/access-rules.yml
