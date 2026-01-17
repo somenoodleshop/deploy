@@ -1,11 +1,11 @@
 ---
-- name: create traefik config directory
+- name: ensure traefik config directory exists
   file:
     path: /app/traefik
     state: directory
     mode: '0755'
 
-- name: create letsencrypt directory
+- name: ensure letsencrypt directory exists
   file:
     path: /app/letsencrypt
     state: directory
