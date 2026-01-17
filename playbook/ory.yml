@@ -7,7 +7,7 @@
 
 - name: copy oathkeeper config files
   copy:
-    src: ./config/oathkeeper
+    src: ../config/oathkeeper
     dest: /app/config/oathkeeper
     mode: '0644'
 
@@ -50,7 +50,7 @@
 
 - name: copy kratos config files
   copy:
-    src: ./config/kratos
+    src: ../config/kratos
     dest: /app/config/kratos
     mode: '0644'
 
