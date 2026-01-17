@@ -1,7 +1,7 @@
 ---
 - name: run public whoami container
   docker_container:
-    name: whoami/public
+    name: whoami-public
     image: traefik/whoami
     state: started
     restart_policy: unless-stopped
@@ -16,7 +16,7 @@
 
 - name: run private whoami container
   docker_container:
-    name: whoami/private
+    name: whoami-private
     image: traefik/whoami
     state: started
     restart_policy: unless-stopped
