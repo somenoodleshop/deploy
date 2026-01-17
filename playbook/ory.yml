@@ -5,6 +5,12 @@
     state: directory
     mode: '0755'
 
+- name: copy oathkeeper config files
+  copy:
+    src: ../../config/oathkeeper
+    dest: /app/config/oathkeeper
+    mode: '0644'
+
 - name: run oathkeeper container
   docker_container:
     name: oathkeeper
