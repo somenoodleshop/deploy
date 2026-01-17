@@ -1,0 +1,14 @@
+- id: whoami-private
+  upstream:
+    preserve_host: true
+    url: http://whoami-private
+  match:
+    url: http://localhost:80/private
+    methods:
+      - GET
+  authenticators:
+    - handler: cookie_session
+  authorizer:
+    handler: allow
+  mutators:
+    - handler: noop
