@@ -1,4 +1,10 @@
 ---
+- name: ensure oathkeeper config directory exists
+  file:
+    path: /app/config/oathkeeper
+    state: directory
+    mode: '0755'
+
 - name: run oathkeeper container
   docker_container:
     name: oathkeeper
