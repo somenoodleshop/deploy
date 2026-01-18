@@ -19,8 +19,6 @@
     restart_policy: unless-stopped
     volumes:
       - /app/config/oathkeeper:/etc/config/oathkeeper
-    depends_on:
-      - traefik
     labels:
       traefik.enable: 'true'
       traefik.http.routers.oathkeeper.entrypoints: 'websecure'
@@ -66,8 +64,6 @@
       - -c /etc/config/kratos/kratos.yml migrate sql -e --yes
     volumes:
       - /app/config/kratos:/etc/config/kratos
-    depends_on:
-      - kratos-db
 
 - name: run kratos container
   docker_container:
@@ -79,8 +75,6 @@
       DSN: postgres://{{ postgres_user }}:{{ postgres_password }}@kratos-db:5432/{{ postgres_db }}?sslmode=disable&max_conns=20&max_idle_conns=4
     volumes:
       - /app/config/kratos:/etc/config/kratos
-    depends_on:
-      - kratos-migrate
     labels:
       traefik.enable: 'true'
       traefik.http.routers.kratos.entrypoints: 'websecure'
