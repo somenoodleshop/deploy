@@ -33,7 +33,7 @@
     image: postgres:15
     state: started
     restart_policy: unless-stopped
-    environment:
+    env:
       POSTGRES_USER: "{{ postgres_user }}"
       POSTGRES_PASSWORD: "{{ postgres_password }}"
       POSTGRES_DB: "{{ postgres_db }}"
@@ -58,7 +58,7 @@
     image: oryd/kratos:v1.3.1
     state: started
     restart_policy: unless-stopped
-    environment:
+    env:
       DSN: postgres://{{ postgres_user }}:{{ postgres_password }}@kratos-db:5432/{{ postgres_db }}?sslmode=disable&max_conns=20&max_idle_conns=4
     command:
       - -c /etc/config/kratos/kratos.yml migrate sql -e --yes
@@ -71,7 +71,7 @@
     image: oryd/kratos:v1.3.1
     state: started
     restart_policy: unless-stopped
-    environment:
+    env:
       DSN: postgres://{{ postgres_user }}:{{ postgres_password }}@kratos-db:5432/{{ postgres_db }}?sslmode=disable&max_conns=20&max_idle_conns=4
     volumes:
       - /app/config/kratos:/etc/config/kratos
