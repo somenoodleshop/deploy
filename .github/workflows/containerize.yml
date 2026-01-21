@@ -115,3 +115,9 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/textlet-fe
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: log into Docker registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
