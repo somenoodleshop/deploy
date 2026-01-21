@@ -23,6 +23,11 @@ on:
         required: false
         type: boolean
         default: false
+      containerize_textlet_be:
+        description: 'Containerize Textlet Backend'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   containerize-hydra:
