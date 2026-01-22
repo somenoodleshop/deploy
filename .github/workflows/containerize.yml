@@ -127,3 +127,15 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/textlet-fe:latest
+
+  containerize-textlet-be:
+    if: ${{ inputs.containerize_textlet_be }}
+    permissions:
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/textlet-be
+          token: ${{ secrets.GITHUB_TOKEN }}
