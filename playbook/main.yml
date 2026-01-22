@@ -64,8 +64,8 @@
           traefik.enable: 'true'
           traefik.http.routers.randomwebsite.entrypoints: 'websecure'
           traefik.http.routers.randomwebsite.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/website`)'
-          traefik.http.routers.randomwebsite.tls.certresolver: 'terraform'
           traefik.http.middlewares.randomwebsite-stripprefix.stripprefix.prefixes: '/website'
+          traefik.http.routers.randomwebsite.tls.certresolver: 'terraform'
           traefik.http.services.randomwebsite.loadbalancer.server.port: '80'
 
     - name: import ory tasks
