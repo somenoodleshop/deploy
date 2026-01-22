@@ -7,3 +7,8 @@
     restart_policy: unless-stopped
     networks:
       - name: intranet
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.textlet-fe.entrypoints: 'websecure'
+      traefik.http.routers.textlet-fe.tls.certresolver: 'terraform'
+      traefik.http.services.textlet-fe.loadbalancer.server.port: '80'
