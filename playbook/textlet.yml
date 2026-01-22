@@ -1,0 +1,5 @@
+---
+- name: run textlet-fe container
+  docker_container:
+    name: textlet-fe
+    image: ghcr.io/{{ github_repository_owner }}/textlet-fe:latest
