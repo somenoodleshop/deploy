@@ -10,5 +10,7 @@
     labels:
       traefik.enable: 'true'
       traefik.http.routers.textlet-fe.entrypoints: 'websecure'
+      traefik.http.routers.textlet-fe.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/textlet`)'
+      traefik.http.middlewares.textlet-fe-stripprefix.stripprefix.prefixes: '/textlet'
       traefik.http.routers.textlet-fe.tls.certresolver: 'terraform'
       traefik.http.services.textlet-fe.loadbalancer.server.port: '80'
