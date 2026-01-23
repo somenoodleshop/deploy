@@ -14,3 +14,8 @@
       traefik.http.middlewares.textlet-fe-stripprefix.stripprefix.prefixes: '/textlet'
       traefik.http.routers.textlet-fe.tls.certresolver: 'terraform'
       traefik.http.services.textlet-fe.loadbalancer.server.port: '80'
+
+- name: run textlet-be container
+  docker_container:
+    name: textlet-be
+    image: ghcr.io/{{ github_repository_owner }}/textlet-be:latest
