@@ -28,4 +28,5 @@
       traefik.http.routers.textlet-be.entrypoints: 'websecure'
       traefik.http.routers.textlet-be.rule: 'Host(`api.{{ domain_name }}`) && PathPrefix(`/textlet`)'
       traefik.http.middlewares.textlet-be-stripprefix.stripprefix.prefixes: '/textlet'
+      traefik.http.routers.textlet-be.tls.certresolver: 'terraform'
       traefik.http.services.textlet-be.loadbalancer.server.port: '80'
