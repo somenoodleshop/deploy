@@ -23,3 +23,7 @@
     restart_policy: unless-stopped
     networks:
       - name: intranet
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.textlet-be.entrypoints: 'websecure'
+      traefik.http.services.textlet-be.loadbalancer.server.port: '80'
