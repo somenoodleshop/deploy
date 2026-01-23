@@ -21,3 +21,5 @@
     image: ghcr.io/{{ github_repository_owner }}/textlet-be:latest
     state: started
     restart_policy: unless-stopped
+    networks:
+      - name: intranet
