@@ -1,0 +1,9 @@
+version: v0.13.0
+
+serve:
+  public:
+    base_url: https://{{ domain_name }}/auth/public/
+    cors:
+      enabled: true
+  admin:
+    base_url: http://kratos:4434/
