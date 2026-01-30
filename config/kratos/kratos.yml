@@ -7,3 +7,10 @@ serve:
       enabled: true
   admin:
     base_url: http://kratos:4434/
+
+selfservice:
+  default_browser_return_url: https://{{ domain_name }}/selfservice/welcome
+  allowed_return_urls:
+    - https://{{ domain_name }}/selfservice
+    - http://localhost:19006/Callback
+    - exp://localhost:8081/--/Callback
