@@ -28,3 +28,7 @@ selfservice:
       enabled: true
     code:
       enabled: true
+
+  flows:
+    error:
+      ui_url: https://{{ domain_name }}/selfservice/error
