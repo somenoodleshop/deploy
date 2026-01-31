@@ -32,3 +32,8 @@ selfservice:
   flows:
     error:
       ui_url: https://{{ domain_name }}/selfservice/error
+
+    settings:
+      ui_url: https://{{ domain_name }}/selfservice/settings
+      privileged_session_max_age: 15m
+      required_aal: highest_available
