@@ -5,6 +5,12 @@
     state: directory
     mode: '0755'
 
+- name: copy database schema file
+  copy:
+    src: ../config/schema/schema.sql
+    dest: /app/config/schema/schema.sql
+    mode: '0644'
+
 - name: run textlet-fe container
   docker_container:
     name: textlet-fe
