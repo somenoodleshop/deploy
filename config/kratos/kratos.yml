@@ -14,3 +14,17 @@ selfservice:
     - https://{{ domain_name }}/selfservice
     - http://localhost:19006/Callback
     - exp://localhost:8081/--/Callback
+
+  methods:
+    password:
+      enabled: true
+    totp:
+      config:
+        issuer: Kratos
+      enabled: true
+    lookup_secret:
+      enabled: true
+    link:
+      enabled: true
+    code:
+      enabled: true
