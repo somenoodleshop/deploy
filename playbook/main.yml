@@ -10,6 +10,9 @@
     postgres_user: "{{ postgres_user }}"
     postgres_password: "{{ postgres_password }}"
     postgres_db: "{{ postgres_db }}"
+    textlet_postgres_user: "{{ textlet_postgres_user }}"
+    textlet_postgres_password: "{{ textlet_postgres_password }}"
+    textlet_postgres_db: "{{ textlet_postgres_db }}"
 
   tasks:
     - name: ensure Docker service is started
