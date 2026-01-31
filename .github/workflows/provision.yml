@@ -78,4 +78,7 @@ jobs:
             -e "github_token=${{ secrets.GITHUB_TOKEN }}" \
             -e "postgres_user=${{ secrets.POSTGRES_USER }}" \
             -e "postgres_password=${{ secrets.POSTGRES_PASSWORD }}" \
-            -e "postgres_db=${{ secrets.POSTGRES_DB }}"
+            -e "postgres_db=${{ secrets.POSTGRES_DB }}" \
+            -e "textlet_postgres_user=${{ secrets.TEXTLET_POSTGRES_USER }}" \
+            -e "textlet_postgres_password=${{ secrets.TEXTLET_POSTGRES_PASSWORD }}" \
+            -e "textlet_postgres_db=${{ secrets.TEXTLET_POSTGRES_DB }}"
