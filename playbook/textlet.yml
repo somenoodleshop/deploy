@@ -1,4 +1,10 @@
 ---
+- name: ensure database schema directory exists
+  file:
+    path: /app/config/schema
+    state: directory
+    mode: '0755'
+
 - name: run textlet-fe container
   docker_container:
     name: textlet-fe
