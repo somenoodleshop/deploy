@@ -35,6 +35,8 @@
     restart_policy: unless-stopped
     networks:
       - name: intranet
+    depends_on:
+      - textlet-db
     labels:
       traefik.enable: 'true'
       traefik.http.routers.textlet-be.entrypoints: 'websecure'
