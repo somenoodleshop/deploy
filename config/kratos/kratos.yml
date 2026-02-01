@@ -79,3 +79,11 @@ secrets:
     - "{{ kratos_cookie_secret | default('PLEASE-CHANGE-ME-I-AM-VERY-INSECURE') }}"
   cipher:
     - "{{ kratos_cipher_secret | default('32-LONG-SECRET-NOT-SECURE-AT-ALL') }}"
+
+hashers:
+  argon2:
+    parallelism: 1
+    memory: 128MB
+    iterations: 2
+    salt_length: 16
+    key_length: 16
