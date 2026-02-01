@@ -52,3 +52,7 @@ selfservice:
     logout:
       after:
         default_browser_return_url: https://{{ domain_name }}/selfservice/login
+
+    login:
+      ui_url: https://{{ domain_name }}/selfservice/login
+      lifespan: 10m
