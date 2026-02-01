@@ -56,3 +56,15 @@ selfservice:
     login:
       ui_url: https://{{ domain_name }}/selfservice/login
       lifespan: 10m
+
+    registration:
+      lifespan: 10m
+      ui_url: https://{{ domain_name }}/selfservice/registration
+      after:
+        oidc:
+          hooks:
+            - hook: session
+        password:
+          hooks:
+            - hook: session
+            - hook: show_verification_ui
