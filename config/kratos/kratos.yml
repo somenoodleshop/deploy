@@ -68,3 +68,8 @@ selfservice:
           hooks:
             - hook: session
             - hook: show_verification_ui
+
+log:
+  level: debug
+  format: text
+  leak_sensitive_values: true
