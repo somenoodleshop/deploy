@@ -48,3 +48,7 @@ selfservice:
       use: code
       after:
         default_browser_return_url: https://{{ domain_name }}/selfservice/welcome
+
+    logout:
+      after:
+        default_browser_return_url: https://{{ domain_name }}/selfservice/login
