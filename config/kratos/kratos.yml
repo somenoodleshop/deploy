@@ -37,3 +37,7 @@ selfservice:
       ui_url: https://{{ domain_name }}/selfservice/settings
       privileged_session_max_age: 15m
       required_aal: highest_available
+
+    recovery:
+      ui_url: https://{{ domain_name }}/selfservice/recovery
+      use: code
