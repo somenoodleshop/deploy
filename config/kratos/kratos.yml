@@ -73,3 +73,9 @@ log:
   level: debug
   format: text
   leak_sensitive_values: true
+
+secrets:
+  cookie:
+    - "{{ kratos_cookie_secret | default('PLEASE-CHANGE-ME-I-AM-VERY-INSECURE') }}"
+  cipher:
+    - "{{ kratos_cipher_secret | default('32-LONG-SECRET-NOT-SECURE-AT-ALL') }}"
