@@ -24,9 +24,9 @@
     restart_policy: unless-stopped
     labels:
       traefik.enable: 'true'
-      traefik.http.routers.whoami.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/private`)'
-      traefik.http.routers.whoami.entrypoints: 'websecure'
-      traefik.http.routers.whoami.tls.certresolver: 'terraform'
-      traefik.http.services.whoami.loadbalancer.server.port: '443'
-      traefik.http.routers.whoami.middlewares: strip-private-prefix
+      traefik.http.routers.whoami-private.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/private`)'
+      traefik.http.routers.whoami-private.entrypoints: 'websecure'
+      traefik.http.routers.whoami-private.tls.certresolver: 'terraform'
+      traefik.http.services.whoami-private.loadbalancer.server.port: '80'
+      traefik.http.routers.whoami-private.middlewares: strip-private-prefix
       traefik.http.middlewares.strip-private-prefix.stripprefix.prefixes: '/private'
