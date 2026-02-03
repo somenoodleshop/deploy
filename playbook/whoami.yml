@@ -5,6 +5,8 @@
     image: traefik/whoami
     state: started
     restart_policy: unless-stopped
+    networks:
+      - name: intranet
     labels:
       traefik.enable: 'true'
       traefik.http.routers.whoami-public.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/public`)'
