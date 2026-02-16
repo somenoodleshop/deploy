@@ -33,3 +33,4 @@
       traefik.http.routers.whoami-private.middlewares: strip-private-prefix
       traefik.http.middlewares.strip-private-prefix.stripprefix.prefixes: '/private'
       traefik.http.middlewares.oathkeeper.forwardauth.address: 'http://oathkeeper:4456/decisions'
+      traefik.http.middlewares.oathkeeper.forwardauth.trustForwardHeader: true
