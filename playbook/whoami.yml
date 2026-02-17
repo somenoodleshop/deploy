@@ -34,3 +34,4 @@
       traefik.http.middlewares.strip-private-prefix.stripprefix.prefixes: '/private'
       traefik.http.middlewares.oathkeeper.forwardauth.address: 'http://oathkeeper:4456/decisions'
       traefik.http.middlewares.oathkeeper.forwardauth.trustForwardHeader: true
+      traefik.http.middlewares.oathkeeper.forwardauth.authResponseHeaders: 'X-Session-ID,X-User'
