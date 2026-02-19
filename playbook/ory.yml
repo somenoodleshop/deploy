@@ -1,7 +1,7 @@
 ---
-- name: ensure oathkeeper config directory exists
+- name: ensure config directory exists
   file:
-    path: /app/config/oathkeeper
+    path: /app/config
     state: directory
     mode: '0755'
 
