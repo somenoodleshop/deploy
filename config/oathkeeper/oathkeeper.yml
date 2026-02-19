@@ -61,7 +61,8 @@ errors:
     redirect:
       enabled: true
       config:
-        to: http://localhost:8000/selfservice/login
+        # to: http://localhost:8000/selfservice/login
+        to: https://google.com/
         when:
           - error:
             - unauthorized
