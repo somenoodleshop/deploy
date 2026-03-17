@@ -43,7 +43,7 @@
 - name: copy kratos config files
   copy:
     src: ../config/kratos
-    dest: /app/config/kratos
+    dest: /app/config
     mode: '0644'
 
 - name: run kratos migrate
