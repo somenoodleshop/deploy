@@ -62,7 +62,7 @@ errors:
       enabled: true
       config:
         # to: http://localhost:8000/selfservice/login
-        to: https://google.com/
+        to: https://arandombit.github.io/
         when:
           - error:
             - unauthorized
