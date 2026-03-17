@@ -40,12 +40,6 @@
     volumes:
       - /app/kratos-db:/var/lib/postgresql/data
 
-- name: ensure kratos config directory exists
-  file:
-    path: /app/config/kratos
-    state: directory
-    mode: '0755'
-
 - name: copy kratos config files
   copy:
     src: ../config/kratos
