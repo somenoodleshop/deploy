@@ -2,16 +2,16 @@ version: v0.13.0
 
 serve:
   public:
-    base_url: https://{{ domain_name }}/auth/public/
+    base_url: https://metis.sh/auth/public/
     cors:
       enabled: true
   admin:
     base_url: http://kratos:4434/
 
 selfservice:
-  default_browser_return_url: https://{{ domain_name }}/selfservice/welcome
+  default_browser_return_url: https://metis.sh/selfservice/welcome
   allowed_return_urls:
-    - https://{{ domain_name }}/selfservice
+    - https://metis.sh/selfservice
     - http://localhost:19006/Callback
     - exp://localhost:8081/--/Callback
 
@@ -31,35 +31,35 @@ selfservice:
 
   flows:
     error:
-      ui_url: https://{{ domain_name }}/selfservice/error
+      ui_url: https://metis.sh/selfservice/error
 
     settings:
-      ui_url: https://{{ domain_name }}/selfservice/settings
+      ui_url: https://metis.sh/selfservice/settings
       privileged_session_max_age: 15m
       required_aal: highest_available
 
     recovery:
-      ui_url: https://{{ domain_name }}/selfservice/recovery
+      ui_url: https://metis.sh/selfservice/recovery
       use: code
 
     verification:
       enabled: true
-      ui_url: https://{{ domain_name }}/selfservice/verification
+      ui_url: https://metis.sh/selfservice/verification
       use: code
       after:
-        default_browser_return_url: https://{{ domain_name }}/selfservice/welcome
+        default_browser_return_url: https://metis.sh/selfservice/welcome
 
     logout:
       after:
-        default_browser_return_url: https://{{ domain_name }}/selfservice/login
+        default_browser_return_url: https://metis.sh/selfservice/login
 
     login:
-      ui_url: https://{{ domain_name }}/selfservice/login
+      ui_url: https://metis.sh/selfservice/login
       lifespan: 10m
 
     registration:
       lifespan: 10m
-      ui_url: https://{{ domain_name }}/selfservice/registration
+      ui_url: https://metis.sh/selfservice/registration
       after:
         oidc:
           hooks:
