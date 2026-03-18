@@ -76,3 +76,10 @@
       traefik.http.routers.kratos.tls.certresolver: 'terraform'
       traefik.http.routers.kratos.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/auth`)'
       traefik.http.middlewares.strip-auth-prefix.stripprefix.prefixes: '/auth'
+
+- name: run kratos selfservice container
+  docker_container:
+    name: kratos-selfservice
+    image: oryd/kratos-selfservice:v1.3.1
+    state: started
+    restart_policy: unless-stopped
