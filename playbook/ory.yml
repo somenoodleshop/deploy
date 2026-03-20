@@ -83,3 +83,10 @@
     image: oryd/kratos-selfservice:v1.3.1
     state: started
     restart_policy: unless-stopped
+    env:
+      KRATOS_PUBLIC_URL: http://kratos:4433/
+      KRATOS_BROWSER_URL: https://metis.sh/kratos
+      PORT: 4435
+      COOKIE_SECRET: "{{ kratos_cookie_secret }}"
+      CSRF_COOKIE_NAME: "{{ kratos_csrf_cookie_name }}"
+      CSRF_COOKIE_SECRET: "{{ kratos_csrf_cookie_secret }}"
