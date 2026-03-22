@@ -90,3 +90,9 @@
       COOKIE_SECRET: "{{ kratos_cookie_secret }}"
       CSRF_COOKIE_NAME: "{{ kratos_csrf_cookie_name }}"
       CSRF_COOKIE_SECRET: "{{ kratos_csrf_cookie_secret }}"
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.kratos-selfservice.entrypoints: 'websecure'
+      traefik.http.services.kratos-selfservice.loadbalancer.server.port: '4433'
+      traefik.http.routers.kratos-selfservice.tls.certresolver: 'terraform'
+      traefik.http.routers.kratos-selfservice.rule: 'Host(`{{ domain_name }}`) && PathPrefix(`/selfservice`)'
