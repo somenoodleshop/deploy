@@ -76,6 +76,9 @@ jobs:
             -e "github_actor=${{ github.actor }}" \
             -e "github_repository_owner=${{ github.repository_owner }}" \
             -e "github_token=${{ secrets.GITHUB_TOKEN }}" \
+            -e "kratos_cookie_secret=${{ secrets.KRATOS_COOKIE_SECRET }}" \
+            -e "kratos_csrf_cookie_name=${{ secrets.KRATOS_CSRF_COOKIE_NAME }}" \
+            -e "kratos_csrf_cookie_secret=${{ secrets.KRATOS_CSRF_COOKIE_SECRET }}" \
             -e "postgres_user=${{ secrets.POSTGRES_USER }}" \
             -e "postgres_password=${{ secrets.POSTGRES_PASSWORD }}" \
             -e "postgres_db=${{ secrets.POSTGRES_DB }}" \
